@@ -1,0 +1,318 @@
+/* ===== VARIÁVEIS DE COR ===== */
+:root {
+    --color-dark: #1B325F;      /* Azul escuro principal */
+    --color-blue: #4C98D0;      /* Azul médio */
+    --color-light-blue: #9CC4E4;  /* Azul claro para hover */
+    --color-orange: #F26C4F;    /* Laranja para seleção */
+    --color-bg-light: #E9F2F9;  /* Fundo claro */
+    --color-text-dark: #333;
+    --color-text-light: #999;
+}
+
+/* ===== RESET E ESTILOS GERAIS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff; /* Fundo branco */
+    color: var(--color-text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    padding: 0;
+}
+
+/* ===== SEÇÃO CALENDÁRIO ===== */
+.calendar-section {
+    background-color: var(--color-dark);
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.calendar-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-header-top h2 {
+    color: var(--color-text-dark);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.calendar-navigation span {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.nav-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+
+.nav-btn:hover {
+    color: var(--color-blue);
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.weekday {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-light);
+    padding: 5px 0;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    transition: all 0.2s ease;
+}
+
+.day:hover {
+    background-color: var(--color-light-blue);
+    color: white;
+}
+
+.day.selected {
+    background-color: var(--color-blue);
+    color: white;
+}
+
+.day.other-month {
+    color: #ccc;
+    cursor: default;
+}
+
+/* ===== SEÇÃO AGENDAMENTO (GRID) ===== */
+.scheduling-section {
+    background-color: #fff;
+    padding: 40px 20px;
+}
+
+.scheduling-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.date-title {
+    color: var(--color-text-light);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.scheduling-grid-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.professionals-list {
+    width: 200px; /* Largura fixa para a lista de profissionais */
+    flex-shrink: 0;
+    padding-top: 20px;
+}
+
+.professionals-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.professional-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+.professional-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-blue);
+}
+
+.professional-name {
+    font-size: 13px;
+    color: var(--color-text-dark);
+    font-weight: 500;
+}
+
+/* Estilo específico para "Sala de conferência" */
+/* Remove o avatar da sala de conferência, se houver */
+.professional-item:last-child .professional-avatar {
+    display: none;
+}
+.professional-item:last-child {
+    margin-top: 15px;
+    padding-left: 0;
+}
+.professional-item:last-child .professional-name {
+    font-size: 12px;
+    color: var(--color-text-light);
+}
+
+.time-grid {
+    flex-grow: 1;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.times-header-row {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+
+.times-header {
+    flex: 1;
+    min-width: 80px; /* Largura mínima para cada coluna de horário */
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 10px 5px;
+    border-right: 1px solid #eee;
+}
+.times-header:last-child {
+    border-right: none;
+}
+
+.time-slot-row {
+    display: flex;
+    border-bottom: 1px solid #ddd; /* Linha horizontal cinza */
+}
+.time-slot-row:last-child {
+    border-bottom: none;
+}
+
+.time-slot {
+    flex: 1;
+    min-width: 80px;
+    height: 40px; /* Altura da célula */
+    background-color: var(--color-bg-light); /* Cor de fundo da célula */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-right: 1px solid #ddd; /* Linha vertical cinza */
+}
+.time-slot:last-child {
+    border-right: none;
+}
+
+.time-slot:hover {
+    background-color: var(--color-orange);
+}
+
+.time-slot.selected {
+    background-color: var(--color-orange);
+    box-shadow: inset 0 0 0 2px var(--color-dark); /* Borda interna para destacar */
+}
+
+/* ===== BOTÃO DE CONFIRMAÇÃO ===== */
+.btn-confirm {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto 0;
+    padding: 15px 20px;
+    background-color: var(--color-orange);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-confirm:hover {
+    background-color: #e05a3e;
+    transform: translateY(-2px);
+}
+
+.btn-confirm:active {
+    transform: translateY(0);
+}
+
+
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+    .scheduling-grid-wrapper {
+        flex-direction: column;
+    }
+
+    .professionals-list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Não há media queries específicas para o header/footer após a remoção */
+}
